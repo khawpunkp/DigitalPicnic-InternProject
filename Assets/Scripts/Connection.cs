@@ -16,13 +16,16 @@ public class Connection : MonoBehaviourPunCallbacks
         //restrict game version
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         //connecting to photon
+        PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "asia";
         PhotonNetwork.ConnectUsingSettings();
+
     }
 
     public override void OnConnectedToMaster()
     {
         print("Connected to server !");
         print(PhotonNetwork.LocalPlayer.NickName);
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
