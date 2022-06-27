@@ -11,8 +11,10 @@ public class Connection : MonoBehaviourPunCallbacks
     void Start()
     {
         print("Connecting to server . . .");
+
+        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //restrict game version
-        PhotonNetwork.GameVersion = "0.0.1";
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         //connecting to photon
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -20,6 +22,7 @@ public class Connection : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         print("Connected to server !");
+        print(PhotonNetwork.LocalPlayer.NickName);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
