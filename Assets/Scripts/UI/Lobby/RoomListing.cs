@@ -9,18 +9,29 @@ namespace UI.Lobby
     public class RoomListing : MonoBehaviourPunCallbacks
     {
         [SerializeField] private Transform _content;
-        [SerializeField] private Rooms _room;  
+        [SerializeField] private Rooms _room;
+
+        private List<Rooms> rooms = new List<Rooms>();
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             Debug.Log("Update room list");
             foreach (RoomInfo info in roomList)
             {
-                Rooms listing = Instantiate(_room, _content);
-                Debug.Log("Create list");
-                if (listing != null)
+                if (info.RemovedFromList)
                 {
-                    listing.SetRoomInfo(info);
+                    var index = rooms.FindIndex(x => x.RoomInfo.Name == info.Name);
+                    if (index == -1) continue;
+                    Destroy(rooms[index].gameObject);
+                    rooms.RemoveAt(index);
+                }
+                else
+                {
+                    Rooms room = Instantiate(_room, _content);
+                    Debug.Log("Create list");
+                    if (room == null) continue;
+                    room.SetRoomInfo(info);
+                    rooms.Add(room);
                 }
             }
         }
