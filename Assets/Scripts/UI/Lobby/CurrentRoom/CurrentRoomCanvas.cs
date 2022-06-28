@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,11 @@ public class CurrentRoomCanvas : MonoBehaviour
     // [SerializeField] private TextMeshProUGUI _roomID;
     
     private RoomCanvas _roomCanvas;
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void FirstInitailize(RoomCanvas canvas)
     {

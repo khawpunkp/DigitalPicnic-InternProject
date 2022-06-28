@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,11 @@ namespace UI.Lobby
         {
             RoomInfo = roomInfo;
             _text.text = roomInfo.Name;
+        }
+
+        public void OnClick_JoinRoom()
+        {
+            PhotonNetwork.JoinRoom(RoomInfo.Name);
         }
     }
 }
