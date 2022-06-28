@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
@@ -13,6 +12,18 @@ namespace UI.Lobby
 
         private List<Rooms> rooms = new List<Rooms>();
 
+        private RoomCanvas _roomCanvas;
+
+        public void FirstInitailize(RoomCanvas canvas)
+        {
+            _roomCanvas = canvas;
+        }
+        
+        public override void OnJoinedRoom()
+        {
+            _roomCanvas.CurrentRoomCanvas.Show(true, PhotonNetwork.CurrentRoom.Name);
+        }
+        
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             Debug.Log("Update room list");

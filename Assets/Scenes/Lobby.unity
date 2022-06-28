@@ -1135,6 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _createRoom: {fileID: 901222686}
+  _roomListing: {fileID: 736657859}
 --- !u!1 &505290495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3b7b8994c16db488a8419e6f7ecd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _roomID: {fileID: 1672295607}
 --- !u!114 &1243168260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2859,8 +2861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -445.09, y: 330}
-  m_SizeDelta: {x: 759.83, y: 180}
+  m_AnchoredPosition: {x: -200, y: 330}
+  m_SizeDelta: {x: 1250, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672295607
 MonoBehaviour:
@@ -2945,7 +2947,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 2.0138626}
+  m_margin: {x: 50, y: 0, z: 0, w: 2.0138626}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using UI.Lobby;
 using UnityEngine;
 
 public class RoomCanvas : MonoBehaviour
@@ -18,7 +15,7 @@ public class RoomCanvas : MonoBehaviour
         get { return _currentRoomCanvas; }
     }
 
-    private void Awake()
+    private void Start()
     {
         FirstInitialize();
     }

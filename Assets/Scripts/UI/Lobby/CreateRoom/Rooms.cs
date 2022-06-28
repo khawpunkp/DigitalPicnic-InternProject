@@ -5,11 +5,13 @@ using UnityEngine;
 
 namespace UI.Lobby
 {
-    public class Rooms : MonoBehaviour
+    public class Rooms : MonoBehaviourPunCallbacks
     {
         [SerializeField] private TextMeshProUGUI _text;
 
         public RoomInfo RoomInfo { get; private set; }
+        
+       
         
         public void SetRoomInfo(RoomInfo roomInfo)
         {
@@ -19,7 +21,7 @@ namespace UI.Lobby
 
         public void OnClick_JoinRoom()
         {
-            PhotonNetwork.JoinRoom(RoomInfo.Name);
+            PhotonNetwork.JoinRoom(RoomInfo.Name); 
         }
     }
 }

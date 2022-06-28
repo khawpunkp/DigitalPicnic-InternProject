@@ -27,7 +27,7 @@ namespace UI.Lobby
         public override void OnCreatedRoom()
         {
             Debug.Log("Created room successfully.");
-            _roomCanvas.CurrentRoomCanvas.Show(true);
+            _roomCanvas.CurrentRoomCanvas.Show(true, _roomID.text);
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
