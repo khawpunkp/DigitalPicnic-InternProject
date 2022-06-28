@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI.Lobby
 {
-    public class RoomList : MonoBehaviour
+    public class Rooms : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _text;
 

@@ -32,4 +32,14 @@ public class Connection : MonoBehaviourPunCallbacks
     {
         print("Disconnected from server for reason: " + cause);
     }
+
+    public override void OnJoinedLobby()
+    {
+        print("Joined lobby !");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        print("Joined room !");
+    }
 }
