@@ -12,6 +12,13 @@ namespace UI.Lobby.CurrentRoom
         [SerializeField] private Players _player;
 
         private List<Players> players = new List<Players>();
+        
+        private RoomCanvas _roomCanvas;
+
+        public void FirstInitailize(RoomCanvas canvas)
+        {
+            _roomCanvas = canvas;
+        }
 
         public void Start()
         {
@@ -36,7 +43,12 @@ namespace UI.Lobby.CurrentRoom
             player.SetPlayerInfo(newPlayer);
             players.Add(player);
         }
-        
+
+        public override void OnLeftRoom()
+        {
+            _content.DestroyChildren();
+        }
+
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             AddPlayerList(newPlayer);

@@ -1,5 +1,6 @@
 using Photon.Realtime;
 using TMPro;
+using UI.Lobby.CurrentRoom;
 using UnityEngine;
 
 namespace UI.Lobby
@@ -9,7 +10,9 @@ namespace UI.Lobby
         private RoomInfo _roomInfo;
     
         [SerializeField] private TextMeshProUGUI _roomID;
-    
+
+        [SerializeField] private PlayerListing _playerListing;
+        [SerializeField] private LeaveRoom _leaveRoom;
         private RoomCanvas _roomCanvas;
 
         private void Start()
@@ -20,9 +23,11 @@ namespace UI.Lobby
         public void FirstInitailize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
+            _leaveRoom.FirstInitailize(canvas);
+            _playerListing.FirstInitailize(canvas);
         }
 
-        public void Show(bool active, string roomID)
+        public void Show(bool active, string roomID = "")
         {
             gameObject.SetActive(active);
             if (active)

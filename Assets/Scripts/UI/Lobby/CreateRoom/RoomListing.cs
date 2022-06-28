@@ -22,6 +22,7 @@ namespace UI.Lobby
         public override void OnJoinedRoom()
         {
             _roomCanvas.CurrentRoomCanvas.Show(true, PhotonNetwork.CurrentRoom.Name);
+            _content.DestroyChildren();
         }
         
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
