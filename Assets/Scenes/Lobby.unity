@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -315,7 +315,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169082402}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &169082404
 Camera:
   m_ObjectHideFlags: 0
@@ -2622,6 +2622,7 @@ GameObject:
   - component: {fileID: 1446332544}
   - component: {fileID: 1446332543}
   - component: {fileID: 1446332546}
+  - component: {fileID: 1446332547}
   m_Layer: 0
   m_Name: PlayerList
   m_TagString: Untagged
@@ -2735,6 +2736,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _content: {fileID: 505290496}
   _player: {fileID: 7856670420775751138, guid: 710eb1b4b57aa904c9f3d6c2a23e0238, type: 3}
+  _readyButton: {fileID: 1908029172}
+  _readyText: {fileID: 2087635017}
+--- !u!114 &1446332547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446332541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1624873608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,7 +3346,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1908029173}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1446332546}
+        m_TargetAssemblyTypeName: UI.Lobby.CurrentRoom.PlayerListing, Assembly-CSharp
+        m_MethodName: OnClick_Ready
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1908029173
 MonoBehaviour:
   m_ObjectHideFlags: 0

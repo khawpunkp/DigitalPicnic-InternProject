@@ -13,6 +13,11 @@ namespace UI.Lobby
 
         [SerializeField] private PlayerListing _playerListing;
         [SerializeField] private LeaveRoom _leaveRoom;
+        public LeaveRoom LeaveRoom
+        {
+            get { return _leaveRoom; }
+        }
+        
         private RoomCanvas _roomCanvas;
 
         private void Start()
@@ -20,7 +25,7 @@ namespace UI.Lobby
             gameObject.SetActive(false);
         }
 
-        public void FirstInitailize(RoomCanvas canvas)
+        public void FirstInitialize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
             _leaveRoom.FirstInitailize(canvas);
