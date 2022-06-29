@@ -27,6 +27,10 @@ namespace UI.Lobby.CurrentRoom
 
         private void GetCurrentPlayer()
         {
+            if(!PhotonNetwork.IsConnected)
+                return;
+            if(PhotonNetwork.CurrentRoom == null || PhotonNetwork.CurrentRoom.Players == null)
+                return;
             foreach (KeyValuePair<int, Player> playerInfo in PhotonNetwork.CurrentRoom.Players)
             {
                 AddPlayerList(playerInfo.Value);
@@ -61,6 +65,14 @@ namespace UI.Lobby.CurrentRoom
             if (index == -1) return;
             Destroy(players[index].gameObject);
             players.RemoveAt(index);
+        }
+
+        public void OnClick_Start()
+        {
+            if (!PhotonNetwork.IsMasterClient) return;
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.LoadLevel("MainScene");
         }
     }
 }

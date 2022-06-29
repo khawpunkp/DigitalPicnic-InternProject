@@ -18,7 +18,7 @@ public class ThirdPersonController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     private float targetAngle;
     private float smoothAngle;
-    private float turnSmootVelocity;
+    private float turnSmoothVelocity;
     private Vector3 moveDirection;
     
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class ThirdPersonController : MonoBehaviour
             //get angle in degrees and camera direction
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
             //smooth rotation
-            smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmootVelocity, turnSmoothTime);
+            smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             //turn character to walk direction
             transform.rotation = Quaternion.Euler(0, smoothAngle, 0);
 
