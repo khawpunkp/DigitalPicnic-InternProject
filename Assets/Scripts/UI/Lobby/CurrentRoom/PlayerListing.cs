@@ -12,8 +12,11 @@ namespace UI.Lobby.CurrentRoom
     {
         [SerializeField] private Transform _content;
         [SerializeField] private Players _player;
-        [SerializeField] private Button _readyButton;
+        [SerializeField] private GameObject _readyButton;
+        [SerializeField] private GameObject _startButton;
+        [SerializeField] private GameObject _masterReady;
         [SerializeField] private TextMeshProUGUI _readyText;
+        [SerializeField] private TextMeshProUGUI _masterReadyText;
         private List<Players> players = new List<Players>();
         
         private RoomCanvas _roomCanvas;
@@ -26,6 +29,10 @@ namespace UI.Lobby.CurrentRoom
 
         public void Start()
         {
+            var isMaster = PhotonNetwork.IsMasterClient;
+            _startButton.SetActive(isMaster);
+            _masterReady.SetActive(isMaster);
+            _readyButton.SetActive(!isMaster);
             GetCurrentPlayer();
         }
 
@@ -48,11 +55,15 @@ namespace UI.Lobby.CurrentRoom
             {
                 _readyButton.GetComponent<Image>().color = Color.green;
                 _readyText.text = "Ready";
+                _masterReady.GetComponent<Image>().color = Color.green;
+                _masterReadyText.text = "Ready";
             }
             else
             {
                 _readyButton.GetComponent<Image>().color = Color.red;
                 _readyText.text = "Not Ready";
+                _masterReady.GetComponent<Image>().color = Color.red;
+                _masterReadyText.text = "NotReady";
             }
         }
 

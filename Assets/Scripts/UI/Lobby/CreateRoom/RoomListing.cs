@@ -23,6 +23,7 @@ namespace UI.Lobby
         {
             _roomCanvas.CurrentRoomCanvas.Show(true, PhotonNetwork.CurrentRoom.Name);
             _content.DestroyChildren();
+            rooms.Clear();
         }
         
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -39,6 +40,8 @@ namespace UI.Lobby
                 }
                 else
                 {
+                    var index = rooms.FindIndex(x => x.RoomInfo.Name == info.Name);
+                    if (index != -1) continue;
                     Rooms room = Instantiate(_room, _content);
                     Debug.Log("Create list");
                     if (room == null) continue;

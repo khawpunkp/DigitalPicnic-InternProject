@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UI.Lobby.CurrentRoom;
@@ -35,7 +36,10 @@ namespace UI.Lobby
         public void Show(bool active, string roomID = "")
         {
             gameObject.SetActive(active);
-            if (active)
+            if (!active) return;
+            if(PhotonNetwork.IsMasterClient)
+                _roomID.text = "MASTER: " + roomID;
+            else
                 _roomID.text = "Room ID: " + roomID;
         }
     }
