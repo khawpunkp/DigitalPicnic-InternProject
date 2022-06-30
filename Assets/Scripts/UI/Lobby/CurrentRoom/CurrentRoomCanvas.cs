@@ -38,9 +38,9 @@ namespace UI.Lobby
             gameObject.SetActive(active);
             if (!active) return;
             if(PhotonNetwork.IsMasterClient)
-                _roomID.text = "MASTER: " + roomID;
+                _roomID.text = "[MASTER] " + roomID;
             else
-                _roomID.text = "Room ID: " + roomID;
+                _roomID.text = roomID;
         }
     }
 }

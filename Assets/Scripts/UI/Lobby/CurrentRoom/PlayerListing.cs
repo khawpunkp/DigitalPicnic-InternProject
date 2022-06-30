@@ -39,7 +39,7 @@ namespace UI.Lobby.CurrentRoom
         public void Update()
         {
             if(PhotonNetwork.IsMasterClient)
-                SetReadyUp(CheckPlayerReady());
+                SetMasterReadyUp(CheckPlayerReady());
         }
 
         public override void OnEnable()
@@ -55,13 +55,23 @@ namespace UI.Lobby.CurrentRoom
             {
                 _readyButton.GetComponent<Image>().color = Color.green;
                 _readyText.text = "Ready";
-                _masterReady.GetComponent<Image>().color = Color.green;
-                _masterReadyText.text = "Ready";
             }
             else
             {
                 _readyButton.GetComponent<Image>().color = Color.red;
                 _readyText.text = "Not Ready";
+            }
+        }
+
+        private void SetMasterReadyUp(bool state)
+        {
+            if (state)
+            {
+                _masterReady.GetComponent<Image>().color = Color.green;
+                _masterReadyText.text = "Ready";
+            }
+            else
+            {
                 _masterReady.GetComponent<Image>().color = Color.red;
                 _masterReadyText.text = "NotReady";
             }
@@ -84,9 +94,10 @@ namespace UI.Lobby.CurrentRoom
             Debug.Log(newPlayer.NickName + " Joined !");
             Players player = Instantiate(_player, _content);
             
-            Debug.Log("Create list");
+            Debug.Log("Create " + newPlayer.NickName + " List");
             if (player == null) return;
             player.SetPlayerInfo(newPlayer);
+            player.ready = false;
             players.Add(player);
         }
 
@@ -116,13 +127,13 @@ namespace UI.Lobby.CurrentRoom
 
         private bool CheckPlayerReady()
         {
+            bool AllPlayerReady = true;
             for (var i = 0; i < players.Count; i++)
             {
-                if (players[i].Player == PhotonNetwork.LocalPlayer) continue;
-                if(!players[i].ready)
-                    return false;
+                if (players[i].Player != PhotonNetwork.LocalPlayer) 
+                    AllPlayerReady = AllPlayerReady && players[i].ready;
             }
-            return true;
+            return AllPlayerReady;
         }
         
         public void OnClick_Start()
@@ -139,7 +150,6 @@ namespace UI.Lobby.CurrentRoom
             if (PhotonNetwork.IsMasterClient) return;
             _ready = !_ready;
             SetReadyUp(_ready);
-            Debug.Log(_ready);
             base.photonView.RPC("RPC_ChangeReadyState", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, _ready);
         }
 
