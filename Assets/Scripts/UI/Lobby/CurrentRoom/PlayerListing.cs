@@ -29,16 +29,16 @@ namespace UI.Lobby.CurrentRoom
 
         public void Start()
         {
-            var isMaster = PhotonNetwork.IsMasterClient;
-            _startButton.SetActive(isMaster);
-            _masterReady.SetActive(isMaster);
-            _readyButton.SetActive(!isMaster);
-            GetCurrentPlayer();
+            
         }
 
         public void Update()
         {
-            if(PhotonNetwork.IsMasterClient)
+            var isMaster = PhotonNetwork.IsMasterClient;
+            _startButton.SetActive(isMaster);
+            _masterReady.SetActive(isMaster);
+            _readyButton.SetActive(!isMaster);
+            if(isMaster)
                 SetMasterReadyUp(CheckPlayerReady());
         }
 
@@ -46,6 +46,17 @@ namespace UI.Lobby.CurrentRoom
         {
             base.OnEnable();
             SetReadyUp(false);
+            GetCurrentPlayer();
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            for (int i = 0; i < players.Count; i++)
+            {
+                Destroy(players[i].gameObject);
+            }
+            players.Clear();
         }
 
         private void SetReadyUp(bool state)
@@ -91,19 +102,20 @@ namespace UI.Lobby.CurrentRoom
 
         private void AddPlayerList(Player newPlayer)
         {
-            Debug.Log(newPlayer.NickName + " Joined !");
-            Players player = Instantiate(_player, _content);
-            
-            Debug.Log("Create " + newPlayer.NickName + " List");
-            if (player == null) return;
-            player.SetPlayerInfo(newPlayer);
-            player.ready = false;
-            players.Add(player);
-        }
+            var index = players.FindIndex(x => Equals(x.Player, newPlayer));
+            if (index != -1)
+                players[index].SetPlayerInfo(newPlayer);
+            else
+            {
+                Debug.Log(newPlayer.NickName + " Joined !");
+                var player = Instantiate(_player, _content);
 
-        public override void OnLeftRoom()
-        {
-            _content.DestroyChildren();
+                Debug.Log("Create " + newPlayer.NickName + " List");
+                if (player == null) return;
+                player.SetPlayerInfo(newPlayer);
+                player.ready = false;
+                players.Add(player);
+            }
         }
 
         public override void OnMasterClientSwitched(Player newMasterClient)
@@ -127,13 +139,13 @@ namespace UI.Lobby.CurrentRoom
 
         private bool CheckPlayerReady()
         {
-            bool AllPlayerReady = true;
+            var allPlayerReady = true;
             for (var i = 0; i < players.Count; i++)
             {
-                if (players[i].Player != PhotonNetwork.LocalPlayer) 
-                    AllPlayerReady = AllPlayerReady && players[i].ready;
+                if (!Equals(players[i].Player, PhotonNetwork.LocalPlayer)) 
+                    allPlayerReady = allPlayerReady && players[i].ready;
             }
-            return AllPlayerReady;
+            return allPlayerReady;
         }
         
         public void OnClick_Start()
