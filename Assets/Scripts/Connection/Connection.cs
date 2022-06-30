@@ -11,19 +11,36 @@ public class Connection : MonoBehaviourPunCallbacks
     void Start()
     {
         print("Connecting to server . . .");
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //restrict game version
-        PhotonNetwork.GameVersion = "0.0.1";
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         //connecting to photon
+        PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = "asia";
         PhotonNetwork.ConnectUsingSettings();
+
     }
 
     public override void OnConnectedToMaster()
     {
         print("Connected to server !");
+        print(PhotonNetwork.LocalPlayer.NickName);
+        if(!PhotonNetwork.InLobby)
+            PhotonNetwork.JoinLobby();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         print("Disconnected from server for reason: " + cause);
+    }
+
+    public override void OnJoinedLobby()
+    {
+        print("Joined lobby !");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        print("Joined room !");
     }
 }

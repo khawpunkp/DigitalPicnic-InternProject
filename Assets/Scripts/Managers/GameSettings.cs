@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSettings : MonoBehaviour
+[CreateAssetMenu(menuName = "Managers/GameSettings")]
+public class GameSettings : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private string _gameVersion = "0.0.0";
+    public string GameVersion
     {
-        
+        get { return _gameVersion; }
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private string _nickName = "Player";
+
+    public string NickName
     {
-        
+        get
+        {
+            int id = Random.Range(0, 9999);
+            return _nickName + "_" + id;
+        }
     }
 }
