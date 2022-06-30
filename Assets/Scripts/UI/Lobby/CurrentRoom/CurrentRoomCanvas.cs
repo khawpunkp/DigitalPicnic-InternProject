@@ -29,8 +29,8 @@ namespace UI.Lobby
         public void FirstInitialize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
-            _leaveRoom.FirstInitailize(canvas);
-            _playerListing.FirstInitailize(canvas);
+            _leaveRoom.FirstInitialize(canvas);
+            _playerListing.FirstInitialize(canvas);
         }
 
         public void Show(bool active, string roomID = "")

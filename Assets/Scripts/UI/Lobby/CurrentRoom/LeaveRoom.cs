@@ -8,7 +8,7 @@ public class LeaveRoom : MonoBehaviour
 
     private RoomCanvas _roomCanvas;
 
-    public void FirstInitailize(RoomCanvas canvas)
+    public void FirstInitialize(RoomCanvas canvas)
     {
         _roomCanvas = canvas;
     }

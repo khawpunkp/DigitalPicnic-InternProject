@@ -22,7 +22,7 @@ public class RoomCanvas : MonoBehaviour
 
     private void FirstInitialize()
     {
-        CreateRoomCanvas.FirstInitailize(this);
+        CreateRoomCanvas.FirstInitialize(this);
         CurrentRoomCanvas.FirstInitialize(this);
     }
 }

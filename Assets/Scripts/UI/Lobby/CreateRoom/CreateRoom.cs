@@ -10,7 +10,7 @@ namespace UI.Lobby
         private RoomCanvas _roomCanvas;
         [SerializeField] private TextMeshProUGUI _roomID;
 
-        public void FirstInitailize(RoomCanvas canvas)
+        public void FirstInitialize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
         }

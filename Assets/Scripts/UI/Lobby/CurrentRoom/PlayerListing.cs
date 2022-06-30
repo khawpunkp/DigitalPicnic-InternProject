@@ -22,14 +22,9 @@ namespace UI.Lobby.CurrentRoom
         private RoomCanvas _roomCanvas;
         private bool _ready = false;
 
-        public void FirstInitailize(RoomCanvas canvas)
+        public void FirstInitialize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
-        }
-
-        public void Start()
-        {
-            
         }
 
         public void Update()
@@ -52,9 +47,9 @@ namespace UI.Lobby.CurrentRoom
         public override void OnDisable()
         {
             base.OnDisable();
-            for (int i = 0; i < players.Count; i++)
+            foreach (var x in players)
             {
-                Destroy(players[i].gameObject);
+                Destroy(x.gameObject);
             }
             players.Clear();
         }
@@ -140,10 +135,10 @@ namespace UI.Lobby.CurrentRoom
         private bool CheckPlayerReady()
         {
             var allPlayerReady = true;
-            for (var i = 0; i < players.Count; i++)
+            foreach (var x in players)
             {
-                if (!Equals(players[i].Player, PhotonNetwork.LocalPlayer)) 
-                    allPlayerReady = allPlayerReady && players[i].ready;
+                if (!Equals(x.Player, PhotonNetwork.LocalPlayer)) 
+                    allPlayerReady = allPlayerReady && x.ready;
             }
             return allPlayerReady;
         }

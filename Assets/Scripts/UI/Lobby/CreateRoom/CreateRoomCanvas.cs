@@ -13,11 +13,11 @@ namespace UI.Lobby
             gameObject.SetActive(true);
         }
 
-        public void FirstInitailize(RoomCanvas canvas)
+        public void FirstInitialize(RoomCanvas canvas)
         {
             _roomCanvas = canvas;
-            _createRoom.FirstInitailize(canvas);
-            _roomListing.FirstInitailize(canvas);
+            _createRoom.FirstInitialize(canvas);
+            _roomListing.FirstInitialize(canvas);
         }
     }
 }
