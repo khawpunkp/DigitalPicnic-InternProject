@@ -47,29 +47,6 @@ public class ThirdPersonController : MonoBehaviourPun
         _animator.SetBool("isGrounded", isGrounded);
         _animator.SetBool("isFalling", false);
 
-        // if (isGrounded)
-        // {
-        //     vertVelocity.y = gravity * Time.deltaTime;
-        //     if (Input.GetKey(KeyCode.Space))
-        //     {
-        //         vertVelocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        //         _animator.SetTrigger("isJumping");
-        //         isJumping = true;
-        //     }
-        //
-        //     if (isJumping || !isGrounded)
-        //     {
-        //         _animator.SetBool("isFalling", true);
-        //         isJumping = false;
-        //     }
-        //     // else 
-        //     //     _animator.SetBool("isJumping", false);
-        // }
-        // else
-        // {
-        //     vertVelocity.y += gravity * Time.deltaTime;
-        // }
-
         if (isGrounded)
         {
             if (vertVelocity.y < 0)
@@ -92,8 +69,6 @@ public class ThirdPersonController : MonoBehaviourPun
         //gravity
         vertVelocity.y += gravity * Time.deltaTime;
         
-        //gravity
-        // vertVelocity.y += gravity * Time.deltaTime;
         controller.Move(vertVelocity * Time.deltaTime);
         
         
