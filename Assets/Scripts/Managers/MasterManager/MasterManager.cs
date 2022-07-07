@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using Photon.Pun;
 using UnityEngine;
@@ -13,10 +11,9 @@ public class MasterManager : ScriptableObjectSingleton<MasterManager>
         get { return Instance._gameSettings; }
     }
 
-
-    public static GameObject NetworkInstantiate(GameObject obj, Vector3 position, Quaternion rotation)
+    public static GameObject NetworkInstantiate(string prefab,Vector3 position, Quaternion rotation)
     {
-        GameObject result = PhotonNetwork.Instantiate(Path.Combine("PlayerAvatar"), position, rotation);
+        GameObject result = PhotonNetwork.Instantiate(Path.Combine(prefab), position, rotation);
         return result;
     }
 }

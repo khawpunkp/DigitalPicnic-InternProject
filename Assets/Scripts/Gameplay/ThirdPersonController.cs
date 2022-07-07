@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class ThirdPersonController : MonoBehaviourPun
 
     public Transform camera;
 
-    public float walkSpeed = 6f;
+    public float walkSpeed = 3f;
     private float speed;
     private float runSpeed;
 
@@ -35,13 +35,15 @@ public class ThirdPersonController : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     { 
-        runSpeed = walkSpeed * 1.5f;
+        runSpeed = walkSpeed * 2.5f;
         _animator = YBot.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!base.photonView.IsMine) return;
+        
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         _animator.SetBool("isGrounded", isGrounded);
@@ -72,7 +74,6 @@ public class ThirdPersonController : MonoBehaviourPun
         controller.Move(vertVelocity * Time.deltaTime);
         
         
-        if (!base.photonView.IsMine) return;
         //get direction
         float hAxis = Input.GetAxisRaw("Horizontal");
         float vAxis = Input.GetAxisRaw("Vertical");
