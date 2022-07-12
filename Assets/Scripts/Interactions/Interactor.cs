@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Interactor : MonoBehaviourPun
