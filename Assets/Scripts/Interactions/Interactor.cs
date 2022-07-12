@@ -11,7 +11,7 @@ public class Interactor : MonoBehaviourPun
     [SerializeField] private float _interactionRadius;
     [SerializeField] private LayerMask _interactableMask;
 
-    private readonly Collider[] _colliders = new Collider[3];
+    private readonly Collider[] _colliders = new Collider[10];
     [SerializeField] private int _objFound;
 
     private void Update()
@@ -27,9 +27,8 @@ public class Interactor : MonoBehaviourPun
         if(interactable == null) return;
         switch (tag)
         {
-            case "AreaInteractable":
             case "ButtonInteractable" when Input.GetKeyDown(KeyCode.F):
-                interactable.Interact(this);
+                interactable.Interaction(this);
                 break;
         }
     }

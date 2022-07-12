@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaInteract : MonoBehaviour, IInteractable
+public class AreaInteract : MonoBehaviour
 {
-    [SerializeField] private string _prompt;
-
-    public string InteractionPrompt => _prompt;
-    public bool Interact(Interactor interactor)
+    [SerializeField] private GameObject _detail;
+    [SerializeField] private float _areaRadius = 5f;
+    
+    private void Start()
     {
-        Debug.Log("AreaInteract Success");
-        return true;
+        GetComponent<SphereCollider>().radius = _areaRadius;
+    }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        _detail.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _detail.SetActive(false);
     }
 }
