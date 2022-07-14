@@ -21,7 +21,7 @@ namespace UI.Lobby
         
         private RoomCanvas _roomCanvas;
 
-        private void Start()
+        private void Awake()
         {
             gameObject.SetActive(false);
         }

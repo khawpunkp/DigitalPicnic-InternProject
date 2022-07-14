@@ -8,9 +8,9 @@ namespace UI.Lobby
         [SerializeField] private RoomListing _roomListing;
         private RoomCanvas _roomCanvas;
 
-        public void Start()
+        public void Awake()
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         public void FirstInitialize(RoomCanvas canvas)
