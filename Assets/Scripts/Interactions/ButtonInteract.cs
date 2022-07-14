@@ -13,11 +13,12 @@ public class ButtonInteract : MonoBehaviourPun, IInteractable
     private void Start()
     {
         GetComponent<SphereCollider>().radius = _areaRadius;
+        MasterManager.NetworkInstantiate("instantiate", Vector3.zero, Quaternion.identity);
     }
 
     public void Interaction(Interactor interactor)
     {
-        if (!photonView.IsMine) return;
+        // if (!photonView.IsMine) return;
         active = !active;
         _detail.SetActive(active);
         Debug.Log("ButtonInteract Success");
