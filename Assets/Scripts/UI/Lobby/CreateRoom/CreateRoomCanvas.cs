@@ -10,6 +10,7 @@ namespace UI.Lobby
 
         public void Awake()
         {
+            Debug.Log("create awake");
             gameObject.SetActive(false);
         }
 

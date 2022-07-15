@@ -23,6 +23,7 @@ namespace UI.Lobby
 
         private void Awake()
         {
+            Debug.Log("current awake");
             gameObject.SetActive(false);
         }
 

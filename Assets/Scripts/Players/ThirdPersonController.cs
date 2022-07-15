@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+ using UnityEngine.Serialization;
 
-public class ThirdPersonController : MonoBehaviourPun
+ public class ThirdPersonController : MonoBehaviourPun
 {
     public CharacterController controller;
 
@@ -29,14 +30,14 @@ public class ThirdPersonController : MonoBehaviourPun
     private float turnSmoothVelocity;
     private Vector3 moveDirection;
 
-    private Animator _animator;
-    public GameObject YBot;
+    private Animator animator;
+    [SerializeField] private GameObject player;
     
     // Start is called before the first frame update
     void Start()
     { 
         runSpeed = walkSpeed * 2.5f;
-        _animator = YBot.GetComponent<Animator>();
+        animator = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,8 +47,8 @@ public class ThirdPersonController : MonoBehaviourPun
         
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        _animator.SetBool("isGrounded", isGrounded);
-        _animator.SetBool("isFalling", false);
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isFalling", false);
 
         if (isGrounded)
         {
@@ -58,13 +59,13 @@ public class ThirdPersonController : MonoBehaviourPun
             if (Input.GetButton("Jump"))
             {
                 vertVelocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-                _animator.SetTrigger("isJumping");
+                animator.SetTrigger("isJumping");
                 isJumping = true;
             }
         }
         else if ((isJumping || !isGrounded) && vertVelocity.y < -3f)
         {
-            _animator.SetBool("isFalling", true); 
+            animator.SetBool("isFalling", true); 
             isJumping = false;
         }
         
@@ -83,18 +84,18 @@ public class ThirdPersonController : MonoBehaviourPun
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = runSpeed;
-            _animator.SetBool("isRunning", true);
+            animator.SetBool("isRunning", true);
         }
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             speed = walkSpeed;
-            _animator.SetBool("isRunning", false);
+            animator.SetBool("isRunning", false);
         }
         
         //move character
         if (direction.magnitude >= 0.1)
         {
-            _animator.SetBool("isWalking", true);
+            animator.SetBool("isWalking", true);
             //get angle in degrees and camera direction
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
             //smooth rotation
@@ -109,6 +110,6 @@ public class ThirdPersonController : MonoBehaviourPun
             controller.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
         else
-            _animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
     }
 }

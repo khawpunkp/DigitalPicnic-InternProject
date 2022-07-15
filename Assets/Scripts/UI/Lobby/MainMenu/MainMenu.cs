@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
     private void Awake()
     {
+        Debug.Log("menu active");
         gameObject.SetActive(true);
     }
 }
