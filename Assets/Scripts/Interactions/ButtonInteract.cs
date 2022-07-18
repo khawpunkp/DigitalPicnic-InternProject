@@ -13,7 +13,7 @@ public class ButtonInteract : MonoBehaviourPun, IInteractable
     private void Start()
     {
         GetComponent<SphereCollider>().radius = _areaRadius;
-        MasterManager.NetworkInstantiate("instantiate", Vector3.zero, Quaternion.identity);
+        // MasterManager.NetworkInstantiate("instantiate", Vector3.zero, Quaternion.identity);
     }
 
     public void Interaction(Interactor interactor)
