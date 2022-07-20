@@ -36,7 +36,6 @@ public class Interactor : MonoBehaviourPun
         }
         else
         {
-            Debug.Log("not found");
             if (interactable != null)
                 interactable = null;
             if(interactionUI.isDisplayed)
