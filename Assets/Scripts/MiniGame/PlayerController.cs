@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private RectTransform background;
+    [SerializeField] private float offset = 10f;
 
     private float maxX;
     private float minX;
@@ -17,10 +18,10 @@ public class PlayerController : MonoBehaviour
         var bgRect = background.rect;
         var playerRect = GetComponent<RectTransform>().rect;
 
-        maxX = (1920/2 + bgRect.width/2) - playerRect.width/2 - 10;
-        minX = (1920/2 - bgRect.width/2) + playerRect.width/2 + 10;
-        maxY = 1080 - playerRect.height/2 - 10;
-        minY = 0 + playerRect.height/2 + 10;
+        maxX = (1920/2 + bgRect.width/2) - playerRect.width/2 - offset;
+        minX = (1920/2 - bgRect.width/2) + playerRect.width/2 + offset;
+        maxY = 1080 - playerRect.height/2 - offset;
+        minY = 0 + playerRect.height/2 + offset;
     }
 
     // Update is called once per frame
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
         targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
         targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
         targetPos.z = 0f;
-        Debug.Log(targetPos);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }
 }
