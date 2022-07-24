@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8293119432664493144}
   - component: {fileID: 8293119432664493151}
   - component: {fileID: 8293119432664493145}
+  - component: {fileID: 5115654511760813186}
   m_Layer: 0
   m_Name: Power
-  m_TagString: Untagged
+  m_TagString: PowerItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 50
+--- !u!114 &5115654511760813186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293119432664493149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a72907a9a989d441b417db1c815b297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10

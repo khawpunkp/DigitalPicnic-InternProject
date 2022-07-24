@@ -6,6 +6,9 @@ TagManager:
   tags:
   - AreaInteractable
   - ButtonInteractable
+  - PowerItem
+  - HeathItem
+  - Enemy
   layers:
   - Default
   - TransparentFX
