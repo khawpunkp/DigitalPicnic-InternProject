@@ -42,6 +42,7 @@ public class MiniGameInteract : MonoBehaviour
     {
         isActive = true;
         MiniGame.SetActive(true);
+        TimeManager.Instance.StartTimer();
         time.text = countDownTime.ToString("0");
         countDownTime -= 1 * Time.deltaTime; 
         if (countDownTime <= 3)

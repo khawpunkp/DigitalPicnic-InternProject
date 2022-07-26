@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     {
         ShowFunnel();
         timePass += Time.deltaTime;
-        timePlayed += Time.deltaTime;
+        timePlayed = TimeManager.Instance.GetTime();
         fireRate = fireRateCurve.Evaluate(timePlayed) * 0.1f;
         if (timePass > fireRate)
         {

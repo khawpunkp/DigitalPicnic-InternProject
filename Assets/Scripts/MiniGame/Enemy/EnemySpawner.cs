@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         timePass += Time.deltaTime;
-        timePlayed += Time.deltaTime;
+        timePlayed = TimeManager.Instance.GetTime();
         // Debug.Log(timePlayed);
         spawnRate = spawnRateCurve.Evaluate(timePlayed) * 0.1f;
         if (timePass > spawnRate)
