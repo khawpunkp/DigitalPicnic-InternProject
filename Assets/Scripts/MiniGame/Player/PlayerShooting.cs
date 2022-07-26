@@ -5,22 +5,36 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    [SerializeField] private AnimationCurve fireRateCurve;
     [SerializeField] private GameObject playerBullet;
+    [SerializeField] private Transform bulletParent;
     [SerializeField] private Transform[] bulletPosition;
-    [SerializeField] private float fireRate = 5f;
-    [SerializeField] private float level = 1;
+    private float fireRate;
+    private float timePass = 0;
+    private float timePlayed = 0;
+    private float level = 1;
     private float maxLevel = 4;
     [SerializeField] private GameObject[] funnel;
 
     // Update is called once per frame
     void Start()
     {
-        InvokeRepeating("FireBullet", 1f, fireRate * 0.1f);
+        FireBullet();
+        timePass = 0;
+        // InvokeRepeating("FireBullet", 1f, fireRate * 0.1f);
     }
 
     private void Update()
     {
         ShowFunnel();
+        timePass += Time.deltaTime;
+        timePlayed += Time.deltaTime;
+        fireRate = fireRateCurve.Evaluate(timePlayed) * 0.1f;
+        if (timePass > fireRate)
+        {
+            FireBullet();
+            timePass = 0;
+        }
     }
 
     private void ShowFunnel()
@@ -40,7 +54,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void InstantiateBullet(int i)
     {
-        GameObject bullet = Instantiate(playerBullet, bulletPosition[i]);
+        GameObject bullet = Instantiate(playerBullet, bulletParent);
         bullet.transform.position = bulletPosition[i].position;
     }
 
@@ -84,7 +98,8 @@ public class PlayerShooting : MonoBehaviour
             }
             case "Enemy":
                 Destroy(col.gameObject);
-                level = 1;
+                if (level > 1)
+                    level -= 1;
                 break;
         }
     }

@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
         var bgRect = background.rect;
         var playerRect = GetComponent<RectTransform>().rect;
 
-        maxX = (1920/2 + bgRect.width/2) - playerRect.width/2 - offset;
-        minX = (1920/2 - bgRect.width/2) + playerRect.width/2 + offset;
+        maxX = ((1920 + bgRect.width) - playerRect.width)/2 - offset;
+        minX = ((1920 - bgRect.width) + playerRect.width)/2 + offset;
         maxY = 1080 - playerRect.height/2 - offset;
         minY = 0 + playerRect.height/2 + offset;
     }

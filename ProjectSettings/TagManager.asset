@@ -9,6 +9,7 @@ TagManager:
   - PowerItem
   - Enemy
   - HealthItem
+  - MinigamePlayer
   layers:
   - Default
   - TransparentFX
