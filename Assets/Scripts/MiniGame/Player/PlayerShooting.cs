@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform[] bulletPosition;
     [SerializeField] private float fireRate = 5f;
     [SerializeField] private float level = 1;
+    private float maxLevel = 4;
     [SerializeField] private GameObject[] funnel;
 
     // Update is called once per frame
@@ -77,7 +78,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 Debug.Log(level);
                 Destroy(col.gameObject);
-                if (level < 4)
+                if (level < maxLevel)
                     level += 1;
                 break;
             }
