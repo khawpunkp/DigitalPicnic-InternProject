@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AnimationCurve speedCurve;
     [SerializeField] private float speed = 10f;
     [SerializeField] private RectTransform background;
     [SerializeField] private float offset = 10f;
@@ -26,7 +27,9 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        var timePlayed = TimeManager.Instance.GetTime();
+        speed = Mathf.RoundToInt(speedCurve.Evaluate(timePlayed)) * 100;
         Vector3 targetPos = Input.mousePosition;
         targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
         targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);

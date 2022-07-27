@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - HealthItem
   - MinigamePlayer
+  - HeathItem
+  - DestroyArea
   layers:
   - Default
   - TransparentFX

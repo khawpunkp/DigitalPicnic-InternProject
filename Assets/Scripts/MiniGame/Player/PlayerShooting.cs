@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
     private float level = 1;
     private float maxLevel = 4;
     [SerializeField] private GameObject[] funnel;
+    private int score = 30;
 
     // Update is called once per frame
     void Start()
@@ -92,6 +93,8 @@ public class PlayerShooting : MonoBehaviour
             {
                 Debug.Log(level);
                 Destroy(col.gameObject);
+                if (level >= maxLevel)
+                    ScoreManager.Instance.AddScore(score);
                 if (level < maxLevel)
                     level += 1;
                 break;

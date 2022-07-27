@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
 
     private int maxHealth = 3;
 
+    private int score = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
         {
             case "HealthItem":
                 Destroy(col.gameObject);
+                if (health >= maxHealth)
+                    ScoreManager.Instance.AddScore(score);
                 if (health < maxHealth)
                     health += 1;
                 Debug.Log(health);
@@ -40,8 +44,11 @@ public class PlayerHealth : MonoBehaviour
                 break;
             case "Enemy":
                 Destroy(col.gameObject);
-                heart[health - 1].SetActive(false);
-                health -= 1;
+                if (health > 0)
+                {
+                    heart[health - 1].SetActive(false);
+                    health -= 1;
+                }
                 break;
         }
     }
