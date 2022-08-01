@@ -1,12 +1,16 @@
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
 public class EndGameResult : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI finalScore;
+    [SerializeField] private TextMeshProUGUI playerName;
+    [SerializeField] private GameObject ScoreBoardCanvas;
     [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private ScoreUI _scoreUI;
     [SerializeField] private GameObject score;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +22,13 @@ public class EndGameResult : MonoBehaviour
     {
         finalScore.text = "Score: " + _playerHealth.finalScore;
         score.SetActive(false);
+    }
+
+    public void OnClick_SubmitScore()
+    {
+        ScoreBoardManager.Instance.AddScore(new PlayerScore(playerName.text, _playerHealth.finalScore));
+        _scoreUI.InstantiateScore();
+        gameObject.SetActive(false);
+        ScoreBoardCanvas.SetActive(true);
     }
 }

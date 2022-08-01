@@ -11,6 +11,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     [SerializeField] private GameObject MiniGame;
     [SerializeField] private GameObject StartGameCanvas;
     [SerializeField] private GameObject EndGameCanvas;
+    [SerializeField] private GameObject ScoreBoardCanvas;
     [SerializeField] private MiniGameSetUp MiniGameSetUp;
     
     public string InteractionPrompt => _prompt;
@@ -38,6 +39,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
         StartGameCanvas.SetActive(true);
         MiniGameSetUp.gameObject.SetActive(true);
         EndGameCanvas.SetActive(false);
+        ScoreBoardCanvas.SetActive(false);
         PlayerDisplay(false);
     }
 

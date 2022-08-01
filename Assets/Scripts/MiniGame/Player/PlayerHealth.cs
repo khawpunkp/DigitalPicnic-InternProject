@@ -19,10 +19,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health == 0)
         {
-            
             transform.parent.gameObject.SetActive(false);
             finalScore = ScoreManager.Instance.GetScore();
-            Debug.Log(finalScore);
             EndGameCanvas.SetActive(true);
         }
     }
