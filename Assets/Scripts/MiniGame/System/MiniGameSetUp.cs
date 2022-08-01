@@ -30,6 +30,7 @@ public class MiniGameSetUp : MonoBehaviour
         {
             GameplayActive(true);
             Countdown(false);
+            gameObject.GetComponent<MiniGameSetUp>().enabled = false;
         }
     }
 

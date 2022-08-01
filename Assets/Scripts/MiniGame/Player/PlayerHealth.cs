@@ -13,18 +13,20 @@ public class PlayerHealth : MonoBehaviour
 
     private int score = 30;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int finalScore = 0;
+
+    [SerializeField] private GameObject EndGameCanvas;
 
     // Update is called once per frame
     void Update()
     {
         if (health == 0)
         {
-            Destroy(transform.parent.gameObject);
+            
+            transform.parent.gameObject.SetActive(false);
+            finalScore = ScoreManager.Instance.GetScore();
+            Debug.Log(finalScore);
+            EndGameCanvas.SetActive(true);
         }
     }
     

@@ -15,6 +15,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     private GameObject localPlayer;
     [SerializeField] private GameObject MiniGame;
     [SerializeField] private GameObject StartGameCanvas;
+    [SerializeField] private GameObject EndGameCanvas;
     [SerializeField] private MiniGameSetUp MiniGameSetUp;
     
     public string InteractionPrompt => _prompt;
@@ -39,6 +40,9 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     public void Interaction(Interactor interactor)
     {
         MiniGame.SetActive(true);
+        StartGameCanvas.SetActive(true);
+        MiniGameSetUp.gameObject.SetActive(true);
+        EndGameCanvas.SetActive(false);
         PlayerDisplay(false);
     }
 
