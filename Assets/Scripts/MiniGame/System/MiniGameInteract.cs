@@ -3,23 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class MiniGameInteract : MonoBehaviour
+public class MiniGameInteract : MonoBehaviour, IInteractable
 {
-    private float countDownTime = 0;
-    public float startTime = 5.2f;
+    [SerializeField] private string _prompt;
+    public float _areaRadius = 7;
     public bool isActive = false;
     private GameObject[] players;
     private GameObject localPlayer;
-    [SerializeField] private TextMeshProUGUI time;
     [SerializeField] private GameObject MiniGame;
+    [SerializeField] private GameObject StartGameCanvas;
+    [SerializeField] private MiniGameSetUp MiniGameSetUp;
+    
+    public string InteractionPrompt => _prompt;
 
     private void Start()
     {
-        countDownTime = startTime;
-        time.gameObject.SetActive(false);
+        GetComponent<CapsuleCollider>().radius = _areaRadius;
         MiniGame.SetActive(false);
+        MiniGameSetUp.setActive(false);
     }
 
     private void Update()
@@ -32,34 +36,60 @@ public class MiniGameInteract : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Interaction(Interactor interactor)
     {
-        countDownTime = startTime;
-        time.gameObject.SetActive(true);
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        isActive = true;
         MiniGame.SetActive(true);
-        TimeManager.Instance.StartTimer();
-        ScoreManager.Instance.StartScore();
-        time.text = countDownTime.ToString("0");
-        countDownTime -= 1 * Time.deltaTime; 
-        if (countDownTime <= 3)
-            time.color = Color.red;
-        if (countDownTime <= 0)
-            time.gameObject.SetActive(false);
-        localPlayer.GetComponent<ThirdPersonController>().enabled = false;
-        localPlayer.transform.GetChild(0).gameObject.SetActive(false);
+        PlayerDisplay(false);
     }
 
-    private void OnTriggerExit(Collider other)
+    // private void OnTriggerEnter(Collider other)
+    // {
+    // countDownTime = startTime;
+    // time.gameObject.SetActive(true);
+    // }
+    //
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     isActive = true;
+    //     MiniGame.SetActive(true);
+    //     TimeManager.Instance.StartTimer();
+    //     ScoreManager.Instance.StartScore();
+    //     time.text = countDownTime.ToString("0");
+    //     countDownTime -= 1 * Time.deltaTime; 
+    //     if (countDownTime <= 3)
+    //         time.color = Color.red;
+    //     if (countDownTime <= 0)
+    //         time.gameObject.SetActive(false);
+    //     PlayerDisplay(false);
+    // }
+    //
+    // private void OnTriggerExit(Collider other)
+    // {
+    // isActive = false;
+    // countDownTime = startTime;
+    // time.gameObject.SetActive(false);
+    // MiniGame.SetActive(false);
+    // localPlayer.SetActive(true);
+    // }
+
+    private void PlayerDisplay(bool active)
     {
-        isActive = false;
-        countDownTime = startTime;
-        time.gameObject.SetActive(false);
+        localPlayer.GetComponent<ThirdPersonController>().enabled = active;
+        localPlayer.transform.GetChild(0).gameObject.SetActive(active);
+    }
+    
+    public void OnClick_ExitMiniGame()
+    {
+        PlayerDisplay(true);
         MiniGame.SetActive(false);
         localPlayer.SetActive(true);
+    }
+
+    public void OnClick_StartMiniGame()
+    {
+        MiniGameSetUp.setActive(true);
+        StartGameCanvas.SetActive(false);
+        TimeManager.Instance.StartTimer();
+        ScoreManager.Instance.StartScore();
     }
 }
