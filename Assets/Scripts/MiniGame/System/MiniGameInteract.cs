@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MiniGameInteract : MonoBehaviour, IInteractable
@@ -45,36 +40,6 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
         EndGameCanvas.SetActive(false);
         PlayerDisplay(false);
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    // countDownTime = startTime;
-    // time.gameObject.SetActive(true);
-    // }
-    //
-    // private void OnTriggerStay(Collider other)
-    // {
-    //     isActive = true;
-    //     MiniGame.SetActive(true);
-    //     TimeManager.Instance.StartTimer();
-    //     ScoreManager.Instance.StartScore();
-    //     time.text = countDownTime.ToString("0");
-    //     countDownTime -= 1 * Time.deltaTime; 
-    //     if (countDownTime <= 3)
-    //         time.color = Color.red;
-    //     if (countDownTime <= 0)
-    //         time.gameObject.SetActive(false);
-    //     PlayerDisplay(false);
-    // }
-    //
-    // private void OnTriggerExit(Collider other)
-    // {
-    // isActive = false;
-    // countDownTime = startTime;
-    // time.gameObject.SetActive(false);
-    // MiniGame.SetActive(false);
-    // localPlayer.SetActive(true);
-    // }
 
     private void PlayerDisplay(bool active)
     {
