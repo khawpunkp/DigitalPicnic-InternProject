@@ -31,25 +31,11 @@ public class TimeManager : MonoBehaviour
             _time += Time.deltaTime;
         }
     }
-
-    private void OnEnable()
-    {
-        ResetTimer();
-    }
-
-    private void OnDisable()
-    {
-        ResetTimer();
-    }
     
     public void StartTimer()
     {
-        enabled = true;
-    }
-    
-    private void ResetTimer()
-    {
         _time = 0;
+        enabled = true;
     }
     
     public float GetTime()

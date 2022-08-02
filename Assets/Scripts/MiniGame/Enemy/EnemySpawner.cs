@@ -10,8 +10,14 @@ public class EnemySpawner : MonoBehaviour
     private float timePlayed = 0;
     private float spawnRate;
 
-    void Start()
+    public void StartSpawnEnemy(bool isActive)
     {
+        gameObject.GetComponent<EnemySpawner>().enabled = isActive;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        if(!isActive) return;
         SpawnEnemy();
         timePass = 0;
     }

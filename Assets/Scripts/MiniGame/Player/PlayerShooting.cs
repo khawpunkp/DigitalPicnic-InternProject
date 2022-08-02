@@ -14,12 +14,14 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject[] funnel;
     private int score = 30;
 
-    // Update is called once per frame
-    void Start()
+    
+    public void StartFireBullet(bool isActive)
     {
+        gameObject.GetComponent<PlayerShooting>().enabled = isActive;
+        if(!isActive) return;
+        level = 1;
         FireBullet();
         timePass = 0;
-        // InvokeRepeating("FireBullet", 1f, fireRate * 0.1f);
     }
 
     private void Update()

@@ -8,7 +8,7 @@ public class EndGameResult : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private GameObject ScoreBoardCanvas;
     [SerializeField] private PlayerHealth _playerHealth;
-    [SerializeField] private ScoreUI _scoreUI;
+    [SerializeField] private ShowScoreboard _showScoreboard;
     [SerializeField] private GameObject score;
 
     // Start is called before the first frame update
@@ -27,8 +27,7 @@ public class EndGameResult : MonoBehaviour
     public void OnClick_SubmitScore()
     {
         ScoreBoardManager.Instance.AddScore(new PlayerScore(playerName.text, _playerHealth.finalScore));
-        _scoreUI.InstantiateScore();
+        _showScoreboard.OnClick_ShowScoreboard();
         gameObject.SetActive(false);
-        ScoreBoardCanvas.SetActive(true);
     }
 }

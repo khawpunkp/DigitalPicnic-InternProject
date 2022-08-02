@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ScoreData : MonoBehaviour
+public class ScoreData
 {
     public List<PlayerScore> PlayerScores;
 

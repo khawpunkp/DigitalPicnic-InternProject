@@ -32,24 +32,10 @@ public class ScoreManager : MonoBehaviour
         if (_score < 0)
             _score = 0;
     }
-
-    private void OnEnable()
-    {
-        ResetScore();
-    }
-
-    private void OnDisable()
-    {
-        ResetScore();
-    }
     
     public void StartScore()
     {
         enabled = true;
-    }
-    
-    private void ResetScore()
-    {
         _score = 0;
     }
     

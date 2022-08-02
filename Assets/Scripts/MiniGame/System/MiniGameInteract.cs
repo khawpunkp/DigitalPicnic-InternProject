@@ -13,6 +13,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     [SerializeField] private GameObject EndGameCanvas;
     [SerializeField] private GameObject ScoreBoardCanvas;
     [SerializeField] private MiniGameSetUp MiniGameSetUp;
+    [SerializeField] private PlayerHealth PlayerHealth;
     
     public string InteractionPrompt => _prompt;
 
@@ -20,7 +21,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     {
         GetComponent<CapsuleCollider>().radius = _areaRadius;
         MiniGame.SetActive(false);
-        MiniGameSetUp.setActive(false);
+        MiniGameSetUp.StartCountDown(false);
     }
 
     private void Update()
@@ -46,6 +47,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     private void PlayerDisplay(bool active)
     {
         localPlayer.GetComponent<ThirdPersonController>().enabled = active;
+        localPlayer.GetComponent<Interactor>().enabled = active;
         localPlayer.transform.GetChild(0).gameObject.SetActive(active);
     }
     
@@ -58,7 +60,9 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
 
     public void OnClick_StartMiniGame()
     {
-        MiniGameSetUp.setActive(true);
+        PlayerHealth.SetPlayerMaxHealth();
+        PlayerHealth.player.SetActive(true);
+        MiniGameSetUp.StartCountDown(true);
         StartGameCanvas.SetActive(false);
         TimeManager.Instance.StartTimer();
         ScoreManager.Instance.StartScore();

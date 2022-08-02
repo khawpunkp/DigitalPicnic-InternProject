@@ -7,6 +7,14 @@ public class ScoreUI : MonoBehaviour
 {
     [SerializeField] private  RowUI rowUI;
 
+    public void ResetScoreUI()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    
     public void InstantiateScore()
     {
         var playerScores = ScoreBoardManager.Instance.GetHighScore().ToArray();

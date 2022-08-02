@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject[] heart;
+    [SerializeField] private GameObject[] hearts;
+    
+    [SerializeField] public GameObject player;
+
+    [SerializeField] private EnemySpawner _enemySpawner;
 
     private int health = 3;
 
@@ -19,9 +24,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health == 0)
         {
-            transform.parent.gameObject.SetActive(false);
+            player.SetActive(false);
             finalScore = ScoreManager.Instance.GetScore();
             EndGameCanvas.SetActive(true);
+            _enemySpawner.StartSpawnEnemy(false);
         }
     }
     
@@ -37,16 +43,25 @@ public class PlayerHealth : MonoBehaviour
                 if (health < maxHealth)
                     health += 1;
                 Debug.Log(health);
-                heart[health - 1].SetActive(true);
+                hearts[health - 1].SetActive(true);
                 break;
             case "Enemy":
                 Destroy(col.gameObject);
                 if (health > 0)
                 {
-                    heart[health - 1].SetActive(false);
+                    hearts[health - 1].SetActive(false);
                     health -= 1;
                 }
                 break;
+        }
+    }
+
+    public void SetPlayerMaxHealth()
+    {
+        health = maxHealth;
+        foreach (var heart in hearts)
+        {
+            heart.SetActive(true);
         }
     }
 }
