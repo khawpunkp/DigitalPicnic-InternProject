@@ -65,7 +65,7 @@ public class EnemyItemDrop : MonoBehaviour
 
     private void SpawnItem()
     {
-        GameObject enemy = Instantiate(itemPrefab[Random.Range(0, 2)], transform.parent);
+        GameObject enemy = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)], transform.parent);
         enemy.transform.position = transform.position;
     }
 }

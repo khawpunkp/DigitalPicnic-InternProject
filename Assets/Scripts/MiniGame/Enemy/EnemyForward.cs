@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyForward : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    public float speed = 10f;
 
     void Update()
     {
-        transform.Translate(Vector2.down * Time.deltaTime * speed);
+        transform.Translate(Vector2.down * Time.deltaTime * speed * Background.Instance.cvScale.x);
     }
 }

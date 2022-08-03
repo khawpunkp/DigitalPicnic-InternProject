@@ -8,6 +8,6 @@ public class PlayerBullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.up * Time.deltaTime * speed);
+        transform.Translate(Vector2.up * Time.deltaTime * speed * Background.Instance.cvScale.x);
     }
 }

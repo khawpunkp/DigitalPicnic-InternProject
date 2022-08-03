@@ -14,14 +14,13 @@ public class ScoreBoardManager : MonoBehaviour
     {
         PS = new List<PlayerScore>();
         
-        if (Instance != null)
-        {  
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
         }
     }
 

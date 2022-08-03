@@ -186,7 +186,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   itemPrefab:
   - {fileID: 3332494974991220149, guid: a1eb65b9db927ab4f902620d0c4240c1, type: 3}
-  - {fileID: 8293119432664493149, guid: 61c5e81088d5c664c8836b428fee89a1, type: 3}
   health: 1
 --- !u!114 &7283513690486624054
 MonoBehaviour:
