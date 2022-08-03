@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class InteractionUI : MonoBehaviour
 {
-    private Camera mainCamera;
     [SerializeField] private GameObject uiPanel;
     [SerializeField] private TextMeshProUGUI promptText;
 
@@ -14,14 +13,7 @@ public class InteractionUI : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
         uiPanel.SetActive(false);
-    }
-
-    private void LateUpdate()
-    {
-        var rotation = mainCamera.transform.rotation;
-        transform.LookAt(transform.position + rotation * Vector3.forward, rotation * Vector3.zero);
     }
 
     public void Show(bool active = false, string text = "")

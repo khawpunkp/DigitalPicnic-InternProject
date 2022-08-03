@@ -11,5 +11,7 @@ public class Instantiate : MonoBehaviourPun
         
         if (!photonView.IsMine) return;
         MasterManager.NetworkInstantiate("PlayerAvatar",instantiatePosition, Quaternion.identity);
+        
+        Destroy(gameObject);
     }
 }

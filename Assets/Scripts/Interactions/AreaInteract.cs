@@ -6,11 +6,12 @@ using UnityEngine;
 public class AreaInteract : MonoBehaviour
 {
     [SerializeField] private GameObject _detail;
-    [SerializeField] private float _areaRadius = 5f;
+    public float _areaRadius = 5f;
     
     private void Start()
     {
         GetComponent<SphereCollider>().radius = _areaRadius;
+        _detail.SetActive(false);
     }
     
     private void OnTriggerStay(Collider other)

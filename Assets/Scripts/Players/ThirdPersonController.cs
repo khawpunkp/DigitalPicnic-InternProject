@@ -32,6 +32,7 @@ using UnityEngine;
 
     private Animator animator;
     [SerializeField] private GameObject player;
+
     
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ using UnityEngine;
     // Update is called once per frame
     void Update()
     {
-        if (!base.photonView.IsMine) return;
+        if (!photonView.IsMine) return;
         
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

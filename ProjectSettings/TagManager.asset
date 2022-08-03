@@ -6,6 +6,12 @@ TagManager:
   tags:
   - AreaInteractable
   - ButtonInteractable
+  - PowerItem
+  - Enemy
+  - HealthItem
+  - MinigamePlayer
+  - HeathItem
+  - DestroyArea
   layers:
   - Default
   - TransparentFX
@@ -15,7 +21,7 @@ TagManager:
   - UI
   - Player
   - Interactable
-  - 
+  - Background
   - 
   - 
   - 

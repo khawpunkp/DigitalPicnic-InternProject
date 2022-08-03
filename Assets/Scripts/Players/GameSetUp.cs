@@ -10,6 +10,7 @@ public class GameSetUp : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        active = true;
         MasterManager.NetworkInstantiate("instantiate", Vector3.zero, Quaternion.identity);
         _exitCanvas.gameObject.SetActive(false);
     }
@@ -19,12 +20,14 @@ public class GameSetUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _exitCanvas.gameObject.SetActive(active);
+            Cursor.visible = active;
             active = !active;
         }
     }
 
     public void OnClick_LeaveGame()
     {
+        PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("Lobby");
     }
 }

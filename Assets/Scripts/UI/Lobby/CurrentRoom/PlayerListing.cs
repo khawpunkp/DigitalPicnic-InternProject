@@ -150,6 +150,7 @@ namespace UI.Lobby.CurrentRoom
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.LoadLevel("MainScene");
+            Cursor.visible = false;
         }
 
         public void OnClick_Ready()

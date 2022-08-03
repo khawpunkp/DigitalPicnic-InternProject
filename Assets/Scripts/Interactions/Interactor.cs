@@ -18,7 +18,6 @@ public class Interactor : MonoBehaviourPun
         if (!photonView.IsMine) return;
         _objFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionRadius, _colliders,
             _interactableMask);
-
         if (_objFound > 0)
         {
             interactable = _colliders[0].GetComponent<IInteractable>();
@@ -36,7 +35,6 @@ public class Interactor : MonoBehaviourPun
         }
         else
         {
-            Debug.Log("not found");
             if (interactable != null)
                 interactable = null;
             if(interactionUI.isDisplayed)
