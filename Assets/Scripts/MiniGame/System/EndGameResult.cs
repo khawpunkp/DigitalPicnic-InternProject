@@ -1,21 +1,16 @@
 using System.Security.Cryptography;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-public class EndGameResult : MonoBehaviour
+public class EndGameResult : MonoBehaviourPun
 {
     [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI playerName;
-    [SerializeField] private GameObject ScoreBoardCanvas;
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private ShowScoreboard _showScoreboard;
     [SerializeField] private GameObject score;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,8 +21,15 @@ public class EndGameResult : MonoBehaviour
 
     public void OnClick_SubmitScore()
     {
-        ScoreBoardManager.Instance.AddScore(new PlayerScore(playerName.text, _playerHealth.finalScore));
+        photonView.RPC("AddScoreToList", RpcTarget.All, playerName.text, _playerHealth.finalScore);
+        // ScoreBoardManager.Instance.AddScore(new PlayerScore(playerName.text, _playerHealth.finalScore));
         _showScoreboard.OnClick_ShowScoreboard();
         gameObject.SetActive(false);
+    }
+
+    [PunRPC]
+    void AddScoreToList(string playerName, int playerScore)
+    {
+        ScoreBoardManager.Instance.AddScore(new PlayerScore(playerName, playerScore));
     }
 }

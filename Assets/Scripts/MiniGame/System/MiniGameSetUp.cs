@@ -35,7 +35,6 @@ public class MiniGameSetUp : MonoBehaviour
     private void Update()
     {
         Countdown(isActive);
-        Debug.Log(countDownTime);
         if (countDownTime < 0)
         {
             GameplayActive(true);

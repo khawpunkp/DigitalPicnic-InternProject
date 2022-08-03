@@ -8,11 +8,11 @@ public class ScoreBoardManager : MonoBehaviour
 {
     public static ScoreBoardManager Instance;
 
-    private ScoreData SD;
+    private List<PlayerScore> PS;
     
     public void Awake()
     {
-        SD = new ScoreData();
+        PS = new List<PlayerScore>();
         
         if (Instance != null)
         {  
@@ -27,12 +27,13 @@ public class ScoreBoardManager : MonoBehaviour
 
     public IEnumerable<PlayerScore> GetHighScore()
     {
-        return SD.PlayerScores.OrderByDescending(x => x.score);
+        return PS.OrderByDescending(x => x.score);
     }
 
     public void AddScore(PlayerScore playerScore)
     {
-        SD.PlayerScores.Add(playerScore);
+        PS.Add(playerScore);
     }
 
+    
 }

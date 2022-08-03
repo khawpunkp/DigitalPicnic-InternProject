@@ -1778,11 +1778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7798657653141864750, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019022197
+      value: 0.000000019022195
       objectReference: {fileID: 0}
     - target: {fileID: 7798657653141864750, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000028688634
+      value: -0.0000000028688631
       objectReference: {fileID: 0}
     - target: {fileID: 7798657653214550831, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_TagString
@@ -1854,15 +1854,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654273532792, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1755435
+      value: 0.17554349
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654273532792, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000015068158
+      value: -0.000000021029773
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654273532792, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000026868394
+      value: 0.000000003749869
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654882702601, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1878,11 +1878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654882702601, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000019703558
+      value: -0.000000019703558
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654882702601, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000043369486
+      value: -0.0000000043369486
       objectReference: {fileID: 0}
     - target: {fileID: 7798657654882702604, guid: f2bd62cc619802a4ba970e66fefee3aa, type: 3}
       propertyPath: m_IsActive
@@ -4904,6 +4904,7 @@ GameObject:
   - component: {fileID: 1217600225}
   - component: {fileID: 1217600223}
   - component: {fileID: 1217600222}
+  - component: {fileID: 1217600226}
   m_Layer: 7
   m_Name: EndGameCanvas
   m_TagString: Untagged
@@ -5015,6 +5016,28 @@ MonoBehaviour:
   _playerHealth: {fileID: 1183030264}
   _showScoreboard: {fileID: 1089846209}
   score: {fileID: 386982818}
+--- !u!114 &1217600226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217600220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1269940737
 GameObject:
   m_ObjectHideFlags: 0
