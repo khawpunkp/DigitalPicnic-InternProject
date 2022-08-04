@@ -6,6 +6,5 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("menu active");
         gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
     }
 }

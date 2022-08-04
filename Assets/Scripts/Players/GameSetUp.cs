@@ -21,6 +21,10 @@ public class GameSetUp : MonoBehaviour
         {
             _exitCanvas.gameObject.SetActive(active);
             Cursor.visible = active;
+            if (active)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
             active = !active;
         }
     }

@@ -38,6 +38,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     {
         MiniGame.SetActive(true);
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         StartGameCanvas.SetActive(true);
         MiniGameSetUp.gameObject.SetActive(true);
         EndGameCanvas.SetActive(false);
@@ -55,6 +56,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
     public void OnClick_ExitMiniGame()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         PlayerDisplay(true);
         MiniGame.SetActive(false);
         localPlayer.SetActive(true);

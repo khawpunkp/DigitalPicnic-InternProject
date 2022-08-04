@@ -149,8 +149,9 @@ namespace UI.Lobby.CurrentRoom
             if (!CheckPlayerReady()) return;
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel("MainScene");
-            Cursor.visible = false;
+            Cursor.visible = false;            
+            Cursor.lockState = CursorLockMode.Locked;
+            PhotonNetwork.LoadLevel("MainScene");            
         }
 
         public void OnClick_Ready()
