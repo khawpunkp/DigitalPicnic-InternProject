@@ -19,7 +19,7 @@ public class MiniGameInteract : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        GetComponent<CapsuleCollider>().radius = _areaRadius;
+        GetComponent<SphereCollider>().radius = _areaRadius;
         MiniGame.SetActive(false);
         MiniGameSetUp.StartCountDown(false);
     }
